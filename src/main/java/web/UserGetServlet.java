@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 @WebServlet("/user")
-public class UserServlet extends HttpServlet {
+public class UserGetServlet extends HttpServlet {
 
     UserService userService = new UserService(new UserRepository());
 
@@ -37,11 +37,10 @@ public class UserServlet extends HttpServlet {
 //
 //        req.setAttribute("names", nameList);
 //        req.setAttribute("name", "fdfbdg");
-        User user = new User(1L, "ali", "5699");
+        User user = new User(null, "ali", "5699");
 //        req.setAttribute("username", user.getUsername());
 //        req.setAttribute("password", user.getPassword());
 //        req.setAttribute("user", user);
-
 
         userService.saveUser(user);
         User foundedUser = userService.findByUserName(req.getParameter("username"));

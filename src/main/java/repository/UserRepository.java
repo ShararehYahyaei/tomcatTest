@@ -3,6 +3,8 @@ package repository;
 import entity.User;
 import org.hibernate.Session;
 
+import java.util.List;
+
 
 public class UserRepository {
 
@@ -21,6 +23,10 @@ public class UserRepository {
         return session.createQuery("FROM User u WHERE u.username =:userName", User.class)
                 .setParameter("userName", userName).uniqueResult();
 
+    }
+
+    public List<User> findAll(Session session) {
+        return session.createQuery("FROM User").list();
     }
 
 
